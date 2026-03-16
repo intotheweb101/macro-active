@@ -14,4 +14,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'zai' => [
+        'api_key' => env('ZAI_API_KEY'),
+        'model' => env('ZAI_MODEL', 'glm-5'),
+        'base_url' => env('ZAI_BASE_URL', 'https://api.z.ai/api/paas/v4'),
+    ],
 ];

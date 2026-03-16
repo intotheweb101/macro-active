@@ -28,7 +28,24 @@ Then open:
 
 - `https://macro-active.ddev.site`
 - `https://macro-active.ddev.site/creator-ops`
+- `https://macro-active.ddev.site/launch-assistant`
 - `https://macro-active.ddev.site/engineering-workflow`
+
+## z.ai demo feature
+
+The repo includes a `Creator Launch Assistant` page wired for z.ai.
+
+Set these in `.env` to enable live generation:
+
+```bash
+ZAI_API_KEY=your-key-here
+ZAI_MODEL=glm-5
+ZAI_BASE_URL=https://api.z.ai/api/paas/v4
+```
+
+Then use:
+
+- `https://macro-active.ddev.site/launch-assistant`
 
 ## Suggested demo branches
 
