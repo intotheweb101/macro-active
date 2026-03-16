@@ -32,6 +32,15 @@
             <div class="mt-8 rounded-2xl border border-violet-400/20 bg-violet-400/10 p-4 text-sm leading-6 text-violet-100">
                 This is a good page to use in a review demo because it is UI-focused, easy to understand, and shows how product + ops requirements become code changes.
             </div>
+
+            <div class="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
+                <h4 class="text-sm font-semibold uppercase tracking-wide text-white/70">Creator health timeline</h4>
+                <div class="mt-4 space-y-3 text-sm leading-6 text-white/70">
+                    <div><strong class="text-white">Week 1:</strong> onboarding checklist complete, payment rails confirmed</div>
+                    <div><strong class="text-white">Week 2:</strong> first campaign live, support questions down 35%</div>
+                    <div><strong class="text-white">Week 3:</strong> health score review highlights retention risk and next action</div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
