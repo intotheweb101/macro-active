@@ -20,10 +20,12 @@ class ZaiLaunchAssistant
     public function generate(array $input): string
     {
         try {
+            $baseUrl = rtrim((string) config('services.zai.base_url'), '/');
+
             $response = Http::acceptJson()
                 ->asJson()
                 ->withToken((string) config('services.zai.api_key'))
-                ->baseUrl(rtrim((string) config('services.zai.base_url'), '/'))
+                ->baseUrl($baseUrl)
                 ->timeout(30)
                 ->post('/chat/completions', [
                     'model' => config('services.zai.model', 'glm-5'),
@@ -48,8 +50,20 @@ class ZaiLaunchAssistant
                     ],
                 ]);
         } catch (ConnectionException $exception) {
+            $message = 'The launch assistant could not reach z.ai.';
+
+            if (config('app.debug')) {
+                $message .= sprintf(
+                    ' Endpoint: %s/chat/completions. Transport error: %s',
+                    $baseUrl,
+                    $exception->getMessage(),
+                );
+            } else {
+                $message .= ' Check network access or the configured base URL and try again.';
+            }
+
             throw new LaunchAssistantException(
-                'The launch assistant could not reach z.ai. Check network access or the configured base URL and try again.',
+                $message,
                 previous: $exception,
             );
         }
