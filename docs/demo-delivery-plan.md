@@ -6,8 +6,9 @@ Create a Laravel-based demo repository that supports four conversations:
 
 1. Local development with DDEV
 2. Demo-friendly product/ops UI pages
-3. Branches and commits for Copilot code review / PR walkthroughs
-4. Automated validation and release pipeline examples
+3. An on-brand AI feature using z.ai
+4. Branches and commits for Copilot code review / PR walkthroughs
+5. Automated validation and release pipeline examples
 
 ## Working assumptions
 
@@ -28,6 +29,7 @@ Create a Laravel-based demo repository that supports four conversations:
 ### Baseline on `main`
 - Overview page
 - Creator operations page
+- Creator launch assistant page
 - Engineering workflow page
 - DDEV config
 - CI and release workflow examples
@@ -35,6 +37,8 @@ Create a Laravel-based demo repository that supports four conversations:
 ### Reviewable follow-up branches
 - `feature/creator-health-timeline`
   - Adds a timeline-style creator health component and extra narrative content
+- `feature/creator-launch-assistant`
+  - Adds z.ai-powered creator launch planning with env-based configuration
 - `chore/release-pipeline-demo`
   - Expands workflow automation, artifacts, and review guidance
 
@@ -43,7 +47,8 @@ Create a Laravel-based demo repository that supports four conversations:
 1. `chore: scaffold laravel demo structure`
 2. `feat: add creator ops and engineering workflow demo pages`
 3. `chore: add ddev and github workflow configuration`
-4. Branch-specific commits for review walkthroughs
+4. `feat: add creator launch assistant with z.ai integration`
+5. Branch-specific commits for review walkthroughs
 
 ## Pull request demo plan
 
@@ -52,7 +57,12 @@ Create a Laravel-based demo repository that supports four conversations:
 - Demo Copilot/code review comments on naming, layout, and maintainability
 - Talk about human review focusing on architecture and clarity
 
-### PR 2 — pipeline / release review
+### PR 2 — AI integration review
+- Show the z.ai service class, controller validation, and env-based configuration
+- Demo comments around prompt shape, error handling, and separation of concerns
+- Talk about how the team owns the workflow while AI supports planning and content generation
+
+### PR 3 — pipeline / release review
 - Show workflow YAML diff
 - Demo comments around caching, artifact packaging, and release triggers
 - Talk about release confidence and rollback readiness
@@ -78,3 +88,8 @@ Create a Laravel-based demo repository that supports four conversations:
 - This shell could not access the Docker daemon
 - This shell did not have PHP / Composer available
 - The repo was assembled structurally for later execution on a normal Docker/PHP-capable machine
+
+## Additional branch
+
+- `chore/release-pipeline-demo`
+  - adds `preview.yml` for PR preview artifacts and a slightly richer workflow demo

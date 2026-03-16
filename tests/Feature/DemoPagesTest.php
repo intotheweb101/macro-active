@@ -20,4 +20,9 @@ class DemoPagesTest extends TestCase
     {
         $this->get('/engineering-workflow')->assertOk();
     }
+
+    public function test_launch_assistant_page_loads(): void
+    {
+        $this->get('/launch-assistant')->assertOk();
+    }
 }
