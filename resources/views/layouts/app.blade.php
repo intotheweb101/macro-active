@@ -18,6 +18,7 @@
                     <nav class="flex flex-wrap gap-2">
                         <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'nav-link-active' : '' }}">Overview</a>
                         <a href="{{ route('creators') }}" class="nav-link {{ request()->routeIs('creators') ? 'nav-link-active' : '' }}">Creator ops</a>
+                        <a href="{{ route('launch-assistant') }}" class="nav-link {{ request()->routeIs('launch-assistant*') ? 'nav-link-active' : '' }}">Launch assistant</a>
                         <a href="{{ route('engineering') }}" class="nav-link {{ request()->routeIs('engineering') ? 'nav-link-active' : '' }}">Engineering</a>
                     </nav>
                 </header>
