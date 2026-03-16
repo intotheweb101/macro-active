@@ -54,9 +54,13 @@ class ZaiLaunchAssistant
             );
         }
 
+        $providerMessage = $this->providerErrorMessage($response->json());
+
         if ($response->status() === 429) {
             throw new LaunchAssistantException(
-                'Live generation is temporarily unavailable because the z.ai account has hit a quota or balance limit. Recharge the account or swap in another API key, then try again.',
+                $providerMessage !== null
+                    ? sprintf('z.ai returned a 429 response: %s', $providerMessage)
+                    : 'z.ai returned a 429 response. This can indicate quota exhaustion, account balance issues, or provider-side throttling.',
             );
         }
 
@@ -67,11 +71,9 @@ class ZaiLaunchAssistant
         }
 
         if ($response->failed()) {
-            $message = data_get($response->json(), 'error.message');
-
             throw new LaunchAssistantException(
-                is_string($message) && $message !== ''
-                    ? sprintf('z.ai could not generate a launch plan: %s', $message)
+                $providerMessage !== null
+                    ? sprintf('z.ai could not generate a launch plan: %s', $providerMessage)
                     : 'z.ai could not generate a launch plan due to an upstream error. Please try again shortly.',
             );
         }
@@ -85,5 +87,22 @@ class ZaiLaunchAssistant
         }
 
         return $content;
+    }
+
+    /**
+     * @param  mixed  $payload
+     */
+    private function providerErrorMessage(mixed $payload): ?string
+    {
+        $code = data_get($payload, 'error.code');
+        $message = data_get($payload, 'error.message');
+
+        if (! is_string($message) || $message === '') {
+            return null;
+        }
+
+        return is_string($code) && $code !== ''
+            ? sprintf('[%s] %s', $code, $message)
+            : $message;
     }
 }
