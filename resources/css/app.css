@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    color-scheme: dark;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --color-brand-green: #3be38b;
+    --color-brand-purple: #a375eb;
+    --color-brand-deep: #120b1d;
+}
+
+body {
+    @apply bg-[var(--color-brand-deep)] text-white antialiased;
+    font-family: var(--font-sans);
+}
+
+.shell {
+    @apply min-h-screen px-6 py-8 md:px-10 lg:px-16;
+    background:
+        radial-gradient(circle at top right, rgba(163, 117, 235, 0.22), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(59, 227, 139, 0.16), transparent 30%),
+        #07000d;
+}
+
+.panel {
+    @apply rounded-3xl border border-white/10 bg-white/5 backdrop-blur;
+}
+
+.metric-card {
+    @apply rounded-2xl border border-white/10 bg-black/20 p-5 shadow-lg shadow-black/20;
+}
+
+.section-title {
+    @apply text-3xl font-semibold tracking-tight text-white md:text-4xl;
+}
+
+.section-copy {
+    @apply text-sm leading-6 text-white/70 md:text-base;
+}
+
+.pill {
+    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium tracking-wide;
+}
+
+.pill-green {
+    @apply border-emerald-400/40 bg-emerald-400/10 text-emerald-200;
+}
+
+.pill-purple {
+    @apply border-violet-400/40 bg-violet-400/10 text-violet-200;
+}
+
+.nav-link {
+    @apply rounded-full px-4 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white;
+}
+
+.nav-link-active {
+    @apply bg-white/10 text-white;
+}
