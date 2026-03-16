@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eu -o pipefail
+
+composer install
+cp -n .env.example .env || true
+if [ ! -f database/database.sqlite ]; then
+  touch database/database.sqlite
+fi
+php artisan key:generate
+npm install
+npm run build

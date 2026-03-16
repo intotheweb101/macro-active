@@ -1,0 +1,21 @@
+name: macro-active
+project_type: laravel
+php_version: "8.3"
+webserver_type: nginx-fpm
+docroot: public
+xdebug_enabled: false
+additional_hostnames: []
+additional_fqdns: []
+database:
+  type: mariadb
+  version: "10.11"
+use_dns_when_possible: true
+composer_version: "2"
+nodejs_version: "18"
+web_environment:
+  - APP_URL=https://macro-active.ddev.site
+  - DB_CONNECTION=sqlite
+  - DB_DATABASE=/var/www/html/database/database.sqlite
+  - SESSION_DRIVER=file
+  - CACHE_STORE=file
+  - QUEUE_CONNECTION=sync
