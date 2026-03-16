@@ -78,3 +78,8 @@ Create a Laravel-based demo repository that supports four conversations:
 - This shell could not access the Docker daemon
 - This shell did not have PHP / Composer available
 - The repo was assembled structurally for later execution on a normal Docker/PHP-capable machine
+
+## Additional branch
+
+- `chore/release-pipeline-demo`
+  - adds `preview.yml` for PR preview artifacts and a slightly richer workflow demo
