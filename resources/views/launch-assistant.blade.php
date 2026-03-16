@@ -98,7 +98,11 @@
                 <p class="meta-label">Generated output</p>
                 <h4 class="mt-3 text-lg font-semibold text-white">Launch plan response</h4>
 
-                @if ($generatedPlan)
+                @if (! empty($assistantError))
+                    <div class="mt-4 rounded-3xl border border-red-400/20 bg-red-400/10 p-4 text-sm leading-6 text-red-100">
+                        {{ $assistantError }}
+                    </div>
+                @elseif ($generatedPlan)
                     <pre class="mt-4 whitespace-pre-wrap text-sm leading-6 text-white/80">{{ $generatedPlan }}</pre>
                 @else
                     <p class="mt-4 text-sm leading-6 text-white/60">Submit the form to generate a creator launch plan. If the API key is not configured yet, this panel stays in setup mode so the page still demos cleanly.</p>

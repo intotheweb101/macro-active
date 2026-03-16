@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\LaunchAssistantException;
 use App\Services\ZaiLaunchAssistant;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -33,13 +34,22 @@ class LaunchAssistantController extends Controller
         ]);
 
         $isConfigured = $assistant->isConfigured();
+        $generatedPlan = null;
+        $assistantError = null;
+
+        if ($isConfigured) {
+            try {
+                $generatedPlan = $assistant->generate($validated);
+            } catch (LaunchAssistantException $exception) {
+                $assistantError = $exception->getMessage();
+            }
+        }
 
         return view('launch-assistant', [
             'isConfigured' => $isConfigured,
-            'generatedPlan' => $isConfigured
-                ? $assistant->generate($validated)
-                : null,
+            'generatedPlan' => $generatedPlan,
             'formData' => $validated,
+            'assistantError' => $assistantError,
             'configurationMessage' => $isConfigured
                 ? null
                 : 'Add ZAI_API_KEY to your .env file to enable live launch plan generation.',
